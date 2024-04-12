@@ -2,15 +2,20 @@
 
 # Overview
 
-This smart contract facilitates crypto loans by allowing users to deposit collateral and borrow 
-funds against it. It supports both ERC20 tokens and native currencies (such as matic) as collateral 
-and loan tokens.
+The CryptoLoan smart contract is designed to facilitate cryptocurrency loans with collateralization. 
+It allows users to request loans by providing collateral in the form of ERC20 tokens or native currency (e.g., Ether). The loan amount is issued in the form of ERC20 tokens. The contract enforces a Loan-to-Value (LTV) 
+ratio to ensure the safety of lenders' funds. Additionally, it calculates and charges interest 
+on the loan amount.
 
 # Features
 
-* Users can request loans by providing collateral and specifying the loan amount, duration, and token.
-* Supported collateral tokens and loan tokens can be configured by the contract owner.
-* Loans can be repaid with interest using ERC20 tokens or native currency.
+* Users can request loans by providing collateral in supported tokens.
+* The loan amount is issued in ERC20 tokens or native currency.
+* The contract enforces a Loan-to-Value (LTV) ratio to mitigate the risk of default.
+* Interest is calculated and charged on the loan amount.
+* Users can repay loans using ERC20 tokens or native currency.
+* Collateral is returned to borrowers upon loan repayment.
+* The contract owner can withdraw ERC20 collateral tokens.
 
 # Function
 
@@ -27,17 +32,15 @@ for native currency).
 2. Repaying a Loan with ERC20 Tokens:
 
 *  Call the repayLoan function with parameters:
-* _borrower: Address of the borrower.
 * _loanToken: Address of the loan token.
-* _collateralToken: Address of the collateral token.
+* _loanid: loanid of the borrower.
 
 
 3. Repaying a Loan with Native Currency:
 
 * Call the repayLoaninnativeCurrency function with parameters:
-* _borrower: Address of the borrower.
-* _collateralToken: Address of the collateral token.
 * _loanToken: Address of the loan token.
+* _loanid: loanid of the borrower.
 * Send the required amount of native currency along with the transaction.
 Withdrawing Collateral.
 
